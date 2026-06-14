@@ -303,7 +303,7 @@ const accountCopy = {
     showRegister: "Создать аккаунт",
     title: "Личный кабинет",
     preferredLanguage: "Предпочитаемый язык",
-    preferredCategory: "Предпочитаемая категория",
+    preferredCategory: "Категория по умолчанию",
     savePreferences: "Сохранить настройки",
     savedArticles: "Сохраненные статьи",
     noSavedArticles: "Пока нет сохраненных статей.",
@@ -325,7 +325,7 @@ const accountCopy = {
     showRegister: "Create account",
     title: "Personal account",
     preferredLanguage: "Preferred language",
-    preferredCategory: "Preferred category",
+    preferredCategory: "Default category",
     savePreferences: "Save preferences",
     savedArticles: "Saved articles",
     noSavedArticles: "No saved articles yet.",
@@ -347,7 +347,7 @@ const accountCopy = {
     showRegister: "إنشاء حساب",
     title: "الحساب الشخصي",
     preferredLanguage: "اللغة المفضلة",
-    preferredCategory: "التصنيف المفضل",
+    preferredCategory: "التصنيف الافتراضي",
     savePreferences: "حفظ التفضيلات",
     savedArticles: "المقالات المحفوظة",
     noSavedArticles: "لا توجد مقالات محفوظة بعد.",
@@ -425,7 +425,7 @@ export default function App() {
     setError("");
   }
 
-  async function handleGenerateDigest(categoryId = selectedCategory) {
+  async function handleGenerateDigest(categoryId = selectedCategory, languageCode = selectedLanguage) {
     setSelectedCategory(categoryId);
     setIsLoading(true);
     setLoadingCategory(categoryId);
@@ -433,10 +433,10 @@ export default function App() {
     setDigestResult(null);
 
     try {
-      const result = await fetchDigest(selectedLanguage, categoryId);
+      const result = await fetchDigest(languageCode, categoryId);
       setDigestResult(result);
     } catch (requestError) {
-      setError(requestError.message || text.errorTitle);
+      setError(requestError.message || copy[languageCode]?.errorTitle || text.errorTitle);
     } finally {
       setIsLoading(false);
       setLoadingCategory("");
@@ -482,6 +482,7 @@ export default function App() {
       setPreferences(result);
       setSelectedLanguage(result.language);
       setSelectedCategory(result.category);
+      await handleGenerateDigest(result.category, result.language);
     } catch (requestError) {
       setAuthError(requestError.message);
     }
