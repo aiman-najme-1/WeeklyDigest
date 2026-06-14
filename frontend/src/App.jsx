@@ -132,7 +132,8 @@ const copy = {
       },
       economy: {
         title: "Экономика",
-        description: "Краткий обзор финансовых, деловых и экономических событий.",
+        description:
+          "Краткий обзор финансовых, деловых и экономических событий.",
       },
       science: {
         title: "Наука",
@@ -204,11 +205,13 @@ const copy = {
       },
       economy: {
         title: "Economy",
-        description: "Short review of financial, business, and economic events.",
+        description:
+          "Short review of financial, business, and economic events.",
       },
       science: {
         title: "Science",
-        description: "Research, discoveries, space, and science news in one digest.",
+        description:
+          "Research, discoveries, space, and science news in one digest.",
       },
       technology: {
         title: "Technology",
@@ -366,7 +369,9 @@ export default function App() {
   const [loadingCategory, setLoadingCategory] = useState("");
   const [error, setError] = useState("");
   const [authMode, setAuthMode] = useState("login");
-  const [authToken, setAuthToken] = useState(() => localStorage.getItem("weeklydigest_token") || "");
+  const [authToken, setAuthToken] = useState(
+    () => localStorage.getItem("weeklydigest_token") || "",
+  );
   const [authError, setAuthError] = useState("");
   const [currentUser, setCurrentUser] = useState(null);
   const [preferences, setPreferences] = useState(null);
@@ -385,7 +390,8 @@ export default function App() {
 
   const selectedCategoryText = text.categories[selectedCategory];
   const resultCategory = digestResult?.category || selectedCategory;
-  const resultCategoryText = text.categories[resultCategory] || selectedCategoryText;
+  const resultCategoryText =
+    text.categories[resultCategory] || selectedCategoryText;
   const savedArticleUrls = savedArticles.map((article) => article.url);
 
   useEffect(() => {
@@ -425,7 +431,10 @@ export default function App() {
     setError("");
   }
 
-  async function handleGenerateDigest(categoryId = selectedCategory, languageCode = selectedLanguage) {
+  async function handleGenerateDigest(
+    categoryId = selectedCategory,
+    languageCode = selectedLanguage,
+  ) {
     setSelectedCategory(categoryId);
     setIsLoading(true);
     setLoadingCategory(categoryId);
@@ -436,7 +445,11 @@ export default function App() {
       const result = await fetchDigest(languageCode, categoryId);
       setDigestResult(result);
     } catch (requestError) {
-      setError(requestError.message || copy[languageCode]?.errorTitle || text.errorTitle);
+      setError(
+        requestError.message ||
+          copy[languageCode]?.errorTitle ||
+          text.errorTitle,
+      );
     } finally {
       setIsLoading(false);
       setLoadingCategory("");
@@ -511,7 +524,9 @@ export default function App() {
   async function handleDeleteSavedArticle(articleId) {
     try {
       await deleteSavedArticle(authToken, articleId);
-      setSavedArticles((current) => current.filter((article) => article.id !== articleId));
+      setSavedArticles((current) =>
+        current.filter((article) => article.id !== articleId),
+      );
     } catch (requestError) {
       setAuthError(requestError.message);
     }
@@ -588,7 +603,11 @@ export default function App() {
             />
           )}
           {!isLoading && (
-            <ErrorBox kicker={text.errorKicker} title={text.errorTitle} message={error} />
+            <ErrorBox
+              kicker={text.errorKicker}
+              title={text.errorTitle}
+              message={error}
+            />
           )}
           {!isLoading && !error && (
             <DigestPanel
@@ -607,7 +626,9 @@ export default function App() {
                 digestResult
                   ? {
                       updatedAt: formatDisplayDate(digestResult.generatedAt),
-                      resultSource: digestResult.fromCache ? text.metadata.cache : text.metadata.fresh,
+                      resultSource: digestResult.fromCache
+                        ? text.metadata.cache
+                        : text.metadata.fresh,
                       sourcesUsed: digestResult.sourcesUsed?.join(", "),
                     }
                   : null
@@ -616,7 +637,10 @@ export default function App() {
           )}
         </div>
 
-        <aside className="workspace-grid__side" aria-label={text.sourcesAriaLabel}>
+        <aside
+          className="workspace-grid__side"
+          aria-label={text.sourcesAriaLabel}
+        >
           <NewsList
             articles={digestResult?.articles}
             canSave={Boolean(currentUser)}

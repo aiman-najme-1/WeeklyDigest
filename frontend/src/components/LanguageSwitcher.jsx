@@ -1,4 +1,9 @@
-export default function LanguageSwitcher({ languages, selectedLanguage, labels, onSelect }) {
+export default function LanguageSwitcher({
+  languages,
+  selectedLanguage,
+  labels,
+  onSelect,
+}) {
   return (
     <section className="toolbar" aria-label={labels.ariaLabel}>
       <div>

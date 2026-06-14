@@ -29,29 +29,29 @@ export default function NewsList({
           const isSaved = savedArticleUrls.includes(article.url);
 
           return (
-          <div className="source-link" key={article.url}>
-            <a href={article.url} target="_blank" rel="noreferrer">
-              <span>{article.title}</span>
-            </a>
-            <small>
-              {sourceLabel}: {article.source || unknownSource}
-            </small>
-            {(article.publishedAt || article.published) && (
+            <div className="source-link" key={article.url}>
+              <a href={article.url} target="_blank" rel="noreferrer">
+                <span>{article.title}</span>
+              </a>
               <small>
-                {dateLabel}: {article.publishedAt || article.published}
+                {sourceLabel}: {article.source || unknownSource}
               </small>
-            )}
-            {canSave && (
-              <button
-                type="button"
-                className="ghost-button source-link__save"
-                disabled={isSaved}
-                onClick={() => onSaveArticle(article)}
-              >
-                {isSaved ? savedLabel : saveLabel}
-              </button>
-            )}
-          </div>
+              {(article.publishedAt || article.published) && (
+                <small>
+                  {dateLabel}: {article.publishedAt || article.published}
+                </small>
+              )}
+              {canSave && (
+                <button
+                  type="button"
+                  className="ghost-button source-link__save"
+                  disabled={isSaved}
+                  onClick={() => onSaveArticle(article)}
+                >
+                  {isSaved ? savedLabel : saveLabel}
+                </button>
+              )}
+            </div>
           );
         })}
       </div>

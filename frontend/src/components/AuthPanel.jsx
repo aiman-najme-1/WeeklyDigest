@@ -1,6 +1,13 @@
 import { useState } from "react";
 
-export default function AuthPanel({ labels, mode, onModeChange, onLogin, onRegister, error }) {
+export default function AuthPanel({
+  labels,
+  mode,
+  onModeChange,
+  onLogin,
+  onRegister,
+  error,
+}) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +36,10 @@ export default function AuthPanel({ labels, mode, onModeChange, onLogin, onRegis
         {isRegister && (
           <label>
             {labels.username}
-            <input value={username} onChange={(event) => setUsername(event.target.value)} />
+            <input
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+            />
           </label>
         )}
 

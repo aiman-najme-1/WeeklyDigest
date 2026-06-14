@@ -1,6 +1,12 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000";
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000";
 const SUPPORTED_LANGUAGES = new Set(["ru", "en", "ar"]);
-const SUPPORTED_CATEGORIES = new Set(["sports", "economy", "science", "technology"]);
+const SUPPORTED_CATEGORIES = new Set([
+  "sports",
+  "economy",
+  "science",
+  "technology",
+]);
 
 async function requestJson(path, options = {}) {
   const response = await fetch(`${API_BASE_URL}${path}`, {
@@ -37,9 +43,13 @@ function authHeaders(token) {
 
 export async function fetchDigest(language, category) {
   const digestLanguage = SUPPORTED_LANGUAGES.has(language) ? language : "ru";
-  const digestCategory = SUPPORTED_CATEGORIES.has(category) ? category : "sports";
+  const digestCategory = SUPPORTED_CATEGORIES.has(category)
+    ? category
+    : "sports";
 
-  const response = await fetch(`${API_BASE_URL}/api/${digestLanguage}/${digestCategory}/digest`);
+  const response = await fetch(
+    `${API_BASE_URL}/api/${digestLanguage}/${digestCategory}/digest`,
+  );
 
   if (!response.ok) {
     let message = "Failed to create digest. Please try again later.";

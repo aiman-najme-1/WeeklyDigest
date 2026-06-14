@@ -39,7 +39,10 @@ export default function Cabinet({
       <form className="auth-form" onSubmit={handlePreferencesSubmit}>
         <label>
           {labels.preferredLanguage}
-          <select value={language} onChange={(event) => setLanguage(event.target.value)}>
+          <select
+            value={language}
+            onChange={(event) => setLanguage(event.target.value)}
+          >
             {languages.map((item) => (
               <option key={item.code} value={item.code}>
                 {item.label}
@@ -50,7 +53,10 @@ export default function Cabinet({
 
         <label>
           {labels.preferredCategory}
-          <select value={category} onChange={(event) => setCategory(event.target.value)}>
+          <select
+            value={category}
+            onChange={(event) => setCategory(event.target.value)}
+          >
             {categories.map((item) => (
               <option key={item.id} value={item.id}>
                 {item.title}
@@ -84,7 +90,11 @@ export default function Cabinet({
         ))}
       </div>
 
-      <button type="button" className="ghost-button account-panel__switch" onClick={onLogout}>
+      <button
+        type="button"
+        className="ghost-button account-panel__switch"
+        onClick={onLogout}
+      >
         {labels.logout}
       </button>
     </section>
