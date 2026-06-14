@@ -77,7 +77,8 @@ GITHUB_MODELS_BASE_URL=https://models.github.ai/inference
 AUTH_SECRET=change_this_simple_secret_for_local_tokens
 ```
 
-If the token is missing or set to the placeholder, the backend still works and creates a simple fallback digest from RSS titles and descriptions.
+If the token is missing or set to the placeholder, the backend still works and
+creates a simple fallback digest from RSS titles and descriptions.
 
 RSS URLs can also be changed in `backend/.env`. See `backend/.env.example` for all available variables.
 

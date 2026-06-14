@@ -77,7 +77,8 @@ const copy = {
       eyebrow: "AI-дайджест новостей",
       subtitle: "Еженедельные новости, кратко и понятно",
       description:
-        "Платформа собирает свежие материалы из RSS-источников и превращает их в связный дайджест для быстрого обзора главных событий недели.",
+        "Платформа собирает свежие материалы из RSS-источников " +
+        "и превращает их в связный дайджест для быстрого обзора главных событий недели.",
       stats: [
         ["RU / EN / AR", "3 языка"],
         ["4 темы", "рабочие категории"],
@@ -148,7 +149,8 @@ const copy = {
       eyebrow: "AI-powered weekly news digest",
       subtitle: "Weekly news, short and clear",
       description:
-        "The platform collects fresh stories from RSS sources and turns them into a clear digest for a quick review of the week's main events.",
+        "The platform collects fresh stories from RSS sources and turns them into " +
+        "a clear digest for a quick review of the week's main events.",
       stats: [
         ["RU / EN / AR", "3 languages"],
         ["4 topics", "working categories"],
@@ -515,7 +517,10 @@ export default function App() {
   }
 
   return (
-    <main className={`app-shell ${selectedLanguage === "ar" ? "is-rtl" : ""}`} dir={selectedLanguage === "ar" ? "rtl" : "ltr"}>
+    <main
+      className={`app-shell ${selectedLanguage === "ar" ? "is-rtl" : ""}`}
+      dir={selectedLanguage === "ar" ? "rtl" : "ltr"}
+    >
       <Header content={text.header} />
 
       <LanguageSwitcher
