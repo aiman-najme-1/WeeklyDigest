@@ -25,14 +25,17 @@ const languages = [
   {
     code: "ru",
     label: "Русский",
+    badge: "RU",
   },
   {
     code: "en",
     label: "English",
+    badge: "EN",
   },
   {
     code: "ar",
     label: "العربية",
+    badge: "AR",
   },
 ];
 
@@ -71,25 +74,25 @@ function formatDisplayDate(value) {
 const copy = {
   ru: {
     header: {
-      eyebrow: "AI-powered weekly news digest",
+      eyebrow: "AI-дайджест новостей",
       subtitle: "Еженедельные новости, кратко и понятно",
       description:
         "Платформа собирает свежие материалы из RSS-источников и превращает их в связный дайджест для быстрого обзора главных событий недели.",
       stats: [
-        ["RU / EN", "два языка"],
+        ["RU / EN / AR", "3 языка"],
         ["4 темы", "рабочие категории"],
         ["RSS", "источники новостей"],
       ],
       statsLabel: "Возможности MVP",
     },
     languageSwitcher: {
-      ariaLabel: "Выбор языка",
+      ariaLabel: "Выбор языка интерфейса",
       kicker: "Язык",
-      title: "Локализация",
+      title: "Язык интерфейса",
     },
     categoriesKicker: "Категории",
     categoriesTitle: "Выберите направление дайджеста",
-    categoryStatusActive: "Активно",
+    categoryStatusActive: "Доступно",
     categoryButton: "Создать дайджест",
     categoryLoading: "Готовим...",
     loadingTitle: "Готовим дайджест: ",
@@ -99,7 +102,7 @@ const copy = {
     digestEmptyKicker: "Результат",
     digestEmptyTitle: "Дайджест появится здесь",
     digestEmptyDescription:
-      "Выберите язык и категорию, чтобы увидеть краткий обзор с ссылками на источники.",
+      "Выберите язык и категорию, чтобы увидеть краткий обзор со ссылками на источники.",
     digestReadyKicker: "Готовый материал",
     digestTitle: "Еженедельный дайджест: ",
     sourcesAriaLabel: "Источники дайджеста",
@@ -109,10 +112,22 @@ const copy = {
     sourcesPlaceholderTitle: "Ссылки появятся после генерации",
     sourcesPlaceholderDescription:
       "После создания дайджеста здесь будут показаны статьи, которые использовал backend.",
+    metadata: {
+      updatedAt: "Обновлено",
+      resultSource: "Источник данных",
+      sourcesUsed: "Использованные источники",
+      cache: "кэш",
+      fresh: "свежий RSS",
+    },
+    articleLabels: {
+      source: "Источник",
+      date: "Дата",
+      unknownSource: "Неизвестный источник",
+    },
     categories: {
       sports: {
         title: "Спорт",
-        description: "Обзор спортивных новостей из актуальной RSS-ленты.",
+        description: "Обзор спортивных новостей из актуальных RSS-лент.",
       },
       economy: {
         title: "Экономика",
@@ -135,20 +150,20 @@ const copy = {
       description:
         "The platform collects fresh stories from RSS sources and turns them into a clear digest for a quick review of the week's main events.",
       stats: [
-        ["RU / EN", "two languages"],
+        ["RU / EN / AR", "3 languages"],
         ["4 topics", "working categories"],
         ["RSS", "news sources"],
       ],
       statsLabel: "MVP features",
     },
     languageSwitcher: {
-      ariaLabel: "Language selection",
+      ariaLabel: "Interface language selection",
       kicker: "Language",
-      title: "Localization",
+      title: "Interface language",
     },
     categoriesKicker: "Categories",
     categoriesTitle: "Choose a digest topic",
-    categoryStatusActive: "Active",
+    categoryStatusActive: "Available",
     categoryButton: "Create digest",
     categoryLoading: "Preparing...",
     loadingTitle: "Preparing digest: ",
@@ -168,10 +183,22 @@ const copy = {
     sourcesPlaceholderTitle: "Links will appear after generation",
     sourcesPlaceholderDescription:
       "After creating a digest, this area will show the articles used by the backend.",
+    metadata: {
+      updatedAt: "Updated at",
+      resultSource: "Source",
+      sourcesUsed: "Sources used",
+      cache: "cache",
+      fresh: "fresh RSS",
+    },
+    articleLabels: {
+      source: "Source",
+      date: "Date",
+      unknownSource: "Unknown source",
+    },
     categories: {
       sports: {
         title: "Sports",
-        description: "Weekly review of sports news from an active RSS feed.",
+        description: "Weekly review of sports news from active RSS feeds.",
       },
       economy: {
         title: "Economy",
@@ -192,18 +219,18 @@ const copy = {
       eyebrow: "ملخص أخبار أسبوعي بالذكاء الاصطناعي",
       subtitle: "أخبار أسبوعية مختصرة وواضحة",
       description:
-        "تجمع المنصة الأخبار من مصادر RSS ثم تحولها إلى ملخص واضح مع روابط للمقالات الأصلية.",
+        "تجمع المنصة الأخبار من مصادر RSS وتحولها إلى ملخص واضح مع روابط للمقالات الأصلية.",
       stats: [
-        ["RU / EN / AR", "ثلاث لغات"],
+        ["RU / EN / AR", "3 لغات"],
         ["4 مواضيع", "تصنيفات متاحة"],
         ["RSS", "مصادر أخبار"],
       ],
-      statsLabel: "مميزات المشروع",
+      statsLabel: "ميزات المشروع",
     },
     languageSwitcher: {
-      ariaLabel: "اختيار اللغة",
+      ariaLabel: "اختيار لغة الواجهة",
       kicker: "اللغة",
-      title: "اللغة",
+      title: "لغة الواجهة",
     },
     categoriesKicker: "التصنيفات",
     categoriesTitle: "اختر موضوع الملخص",
@@ -213,10 +240,11 @@ const copy = {
     loadingTitle: "جاري تحضير الملخص: ",
     loadingDescription: "نجمع الأخبار من RSS وننشئ ملخصا قصيرا.",
     errorKicker: "خطأ",
-    errorTitle: "تعذر إنشاء الملخص. حاول مرة أخرى.",
+    errorTitle: "تعذر إنشاء الملخص. حاول مرة أخرى لاحقا.",
     digestEmptyKicker: "النتيجة",
     digestEmptyTitle: "سيظهر الملخص هنا",
-    digestEmptyDescription: "اختر اللغة والتصنيف لعرض ملخص قصير مع روابط المصادر.",
+    digestEmptyDescription:
+      "اختر اللغة والتصنيف لعرض ملخص قصير مع روابط المصادر.",
     digestReadyKicker: "الملخص جاهز",
     digestTitle: "الملخص الأسبوعي: ",
     sourcesAriaLabel: "مصادر الملخص",
@@ -224,7 +252,20 @@ const copy = {
     newsTitle: "الأخبار المستخدمة في الملخص",
     sourcesKicker: "المصادر",
     sourcesPlaceholderTitle: "ستظهر الروابط بعد إنشاء الملخص",
-    sourcesPlaceholderDescription: "بعد إنشاء الملخص ستظهر هنا المقالات التي استخدمها backend.",
+    sourcesPlaceholderDescription:
+      "بعد إنشاء الملخص ستظهر هنا المقالات التي استخدمها backend.",
+    metadata: {
+      updatedAt: "آخر تحديث",
+      resultSource: "مصدر البيانات",
+      sourcesUsed: "المصادر المستخدمة",
+      cache: "ذاكرة التخزين",
+      fresh: "RSS جديد",
+    },
+    articleLabels: {
+      source: "المصدر",
+      date: "التاريخ",
+      unknownSource: "مصدر غير معروف",
+    },
     categories: {
       sports: {
         title: "الرياضة",
@@ -248,26 +289,26 @@ const copy = {
 
 const accountCopy = {
   ru: {
-    kicker: "Account",
-    loginTitle: "Login",
-    registerTitle: "Register",
-    username: "Username",
+    kicker: "Аккаунт",
+    loginTitle: "Вход",
+    registerTitle: "Регистрация",
+    username: "Имя пользователя",
     email: "Email",
-    password: "Password",
-    loginButton: "Login",
-    registerButton: "Register",
-    showLogin: "Already have an account? Login",
-    showRegister: "Create account",
-    title: "Personal cabinet",
-    preferredLanguage: "Preferred language",
-    preferredCategory: "Preferred category",
-    savePreferences: "Save preferences",
-    savedArticles: "Saved articles",
-    noSavedArticles: "No saved articles yet.",
-    deleteArticle: "Delete",
-    logout: "Logout",
-    saveArticle: "Save article",
-    savedArticle: "Saved",
+    password: "Пароль",
+    loginButton: "Войти",
+    registerButton: "Зарегистрироваться",
+    showLogin: "Уже есть аккаунт? Войти",
+    showRegister: "Создать аккаунт",
+    title: "Личный кабинет",
+    preferredLanguage: "Предпочитаемый язык",
+    preferredCategory: "Предпочитаемая категория",
+    savePreferences: "Сохранить настройки",
+    savedArticles: "Сохраненные статьи",
+    noSavedArticles: "Пока нет сохраненных статей.",
+    deleteArticle: "Удалить",
+    logout: "Выйти",
+    saveArticle: "Сохранить статью",
+    savedArticle: "Сохранено",
   },
   en: {
     kicker: "Account",
@@ -280,7 +321,7 @@ const accountCopy = {
     registerButton: "Register",
     showLogin: "Already have an account? Login",
     showRegister: "Create account",
-    title: "Personal cabinet",
+    title: "Personal account",
     preferredLanguage: "Preferred language",
     preferredCategory: "Preferred category",
     savePreferences: "Save preferences",
@@ -552,15 +593,15 @@ export default function App() {
                 emptyDescription: text.digestEmptyDescription,
                 readyKicker: text.digestReadyKicker,
                 readyTitle: `${text.digestTitle}${resultCategoryText.title}`,
-                updatedAt: selectedLanguage === "ar" ? "آخر تحديث" : "Updated at",
-                resultSource: selectedLanguage === "ar" ? "المصدر" : "Source",
-                sourcesUsed: selectedLanguage === "ar" ? "المصادر المستخدمة" : "Sources used",
+                updatedAt: text.metadata.updatedAt,
+                resultSource: text.metadata.resultSource,
+                sourcesUsed: text.metadata.sourcesUsed,
               }}
               metadata={
                 digestResult
                   ? {
                       updatedAt: formatDisplayDate(digestResult.generatedAt),
-                      resultSource: digestResult.fromCache ? "cache" : "fresh RSS",
+                      resultSource: digestResult.fromCache ? text.metadata.cache : text.metadata.fresh,
                       sourcesUsed: digestResult.sourcesUsed?.join(", "),
                     }
                   : null
@@ -575,12 +616,11 @@ export default function App() {
             canSave={Boolean(currentUser)}
             kicker={text.newsKicker}
             labels={{
-              source: selectedLanguage === "ru" ? "Источник" : "Source",
-              date: selectedLanguage === "ru" ? "Дата" : "Date",
+              source: text.articleLabels.source,
+              date: text.articleLabels.date,
               saveArticle: accountText.saveArticle,
               savedArticle: accountText.savedArticle,
-              unknownSource:
-                selectedLanguage === "ru" ? "Неизвестный источник" : "Unknown source",
+              unknownSource: text.articleLabels.unknownSource,
             }}
             onSaveArticle={handleSaveArticle}
             savedArticleUrls={savedArticleUrls}

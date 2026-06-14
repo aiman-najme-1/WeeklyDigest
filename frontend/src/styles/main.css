@@ -45,7 +45,9 @@ body {
 }
 
 button,
-a {
+a,
+input,
+select {
   font: inherit;
 }
 
@@ -116,9 +118,11 @@ a {
   max-width: 760px;
   margin: 0;
   color: #ffffff;
-  font-size: clamp(3.8rem, 9vw, 7.4rem);
-  line-height: 0.94;
+  font-size: clamp(3.4rem, 7vw, 6.2rem);
+  line-height: 1.28;
   letter-spacing: 0;
+  overflow-wrap: anywhere;
+  padding-bottom: 0.06em;
 }
 
 .hero__subtitle {
@@ -177,6 +181,7 @@ a {
 
 .toolbar {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
@@ -185,6 +190,10 @@ a {
   border-radius: var(--radius);
   background: rgba(9, 18, 32, 0.82);
   box-shadow: 0 14px 42px rgba(0, 0, 0, 0.2);
+}
+
+.toolbar > div {
+  min-width: 0;
 }
 
 h2,
@@ -209,6 +218,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  justify-content: flex-end;
 }
 
 .language-switcher__item {
@@ -222,6 +232,7 @@ p {
   color: var(--soft);
   background: rgba(255, 255, 255, 0.05);
   cursor: pointer;
+  white-space: nowrap;
   transition:
     transform 180ms ease,
     border-color 180ms ease,
@@ -248,6 +259,7 @@ p {
 
 .section-heading {
   display: flex;
+  flex-wrap: wrap;
   align-items: end;
   justify-content: space-between;
   gap: 20px;
@@ -298,6 +310,7 @@ p {
 
 .category-card__top {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
@@ -354,6 +367,9 @@ p {
   border-radius: var(--radius);
   font-weight: 850;
   letter-spacing: 0;
+  line-height: 1.2;
+  text-align: center;
+  white-space: normal;
 }
 
 .primary-button {
@@ -508,11 +524,29 @@ p {
 .auth-form select {
   width: 100%;
   min-height: 42px;
+  min-width: 0;
   padding: 0 12px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--radius);
   color: var(--text);
   background: rgba(255, 255, 255, 0.06);
+  color-scheme: dark;
+  line-height: 1.2;
+}
+
+.auth-form select {
+  cursor: pointer;
+}
+
+.auth-form select option {
+  color: #edf4ff;
+  background: #101827;
+}
+
+.auth-form select:focus,
+.auth-form input:focus {
+  outline: 2px solid rgba(56, 217, 232, 0.55);
+  outline-offset: 2px;
 }
 
 .account-panel__error {
@@ -534,6 +568,12 @@ p {
 .cabinet-user strong {
   color: #ffffff;
   font-size: 1.1rem;
+}
+
+.cabinet-user span,
+.saved-article a,
+.source-link span {
+  overflow-wrap: anywhere;
 }
 
 .saved-articles {
@@ -617,6 +657,15 @@ p {
 .app-shell.is-rtl .category-card__top,
 .app-shell.is-rtl .toolbar {
   direction: rtl;
+}
+
+.app-shell.is-rtl .language-switcher {
+  justify-content: flex-start;
+}
+
+.app-shell.is-rtl .auth-form select {
+  direction: rtl;
+  text-align: right;
 }
 
 .app-shell.is-rtl .source-link__save {
